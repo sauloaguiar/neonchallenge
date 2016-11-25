@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sauloaguiar.neonapplication.R;
+import com.sauloaguiar.neonapplication.data.Friend;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -21,11 +24,11 @@ public class SendMoneyContactAdapter extends RecyclerView.Adapter<SendMoneyConta
     }
 
 
-    private String[] contacts;
+    private List<Friend> friends;
     private AdapterListenerCallback callback;
 
-    public SendMoneyContactAdapter(String[] contacts, AdapterListenerCallback callback){
-        this.contacts = contacts;
+    public SendMoneyContactAdapter(List<Friend> friends, AdapterListenerCallback callback){
+        this.friends = friends;
         this.callback = callback;
     }
 
@@ -37,13 +40,15 @@ public class SendMoneyContactAdapter extends RecyclerView.Adapter<SendMoneyConta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // update with real data
-        //holder.name.setText(contacts[position]);
+        Friend friend = friends.get(position);
+        holder.name.setText(friend.getName());
+        holder.phone.setText(friend.getPhone());
+        holder.photo.setImageResource(friend.getImageResource());
     }
 
     @Override
     public int getItemCount() {
-        return contacts.length;
+        return friends.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

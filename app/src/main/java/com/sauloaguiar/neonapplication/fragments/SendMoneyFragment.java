@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,11 @@ import android.view.ViewGroup;
 
 import com.sauloaguiar.neonapplication.R;
 import com.sauloaguiar.neonapplication.adapters.SendMoneyContactAdapter;
+import com.sauloaguiar.neonapplication.data.Friend;
+import com.sauloaguiar.neonapplication.data.FriendRepositories;
+import com.sauloaguiar.neonapplication.data.FriendsRepository;
+
+import java.util.List;
 
 /**
  * Created by sauloaguiar on 11/24/16.
@@ -29,8 +35,8 @@ public class SendMoneyFragment extends Fragment {
 
     protected RecyclerView recyclerView;
     protected SendMoneyContactAdapter madapter;
-    protected String[] contacts;
-
+    //protected String[] contacts;
+    List<Friend> contacts = null;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +58,7 @@ public class SendMoneyFragment extends Fragment {
         });
 
         recyclerView.setAdapter(madapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), mLayoutManager.getOrientation()));
         return rootView;
     }
 
@@ -60,11 +67,16 @@ public class SendMoneyFragment extends Fragment {
      * from a local content provider or remote server.
      */
     private void initDataset() {
-        contacts = new String[20];
-        for (int i = 0; i < 20; i++) {
-            contacts[i] = "This is element #" + i;
-        }
-
+//        contacts = new String[20];
+//        for (int i = 0; i < 20; i++) {
+//            contacts[i] = "This is element #" + i;
+//        }
+        FriendRepositories.getInMemoryRepo().getAllFriends(new FriendsRepository.FriendsServiceCallback<List<Friend>>() {
+            @Override
+            public void onLoaded(List<Friend> friends) {
+                contacts = friends;
+            }
+        });
     }
 
     private void showDialog(int position){

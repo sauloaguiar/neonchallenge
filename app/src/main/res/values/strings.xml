@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">NeonApplication</string>
-    <string name="send_money">Enviar Dinheiro</string>
-    <string name="send_history">Historico de Envios</string>
+    <string name="send_money">ENVIAR DINHEIRO</string>
+    <string name="send_history">HISTÓRICO DE ENVIOS</string>
 </resources>

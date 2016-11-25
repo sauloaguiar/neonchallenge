@@ -26,6 +26,7 @@ public class SendMoneyActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.send_money);
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
