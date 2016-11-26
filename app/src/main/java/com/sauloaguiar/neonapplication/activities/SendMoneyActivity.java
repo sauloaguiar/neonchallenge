@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.sauloaguiar.neonapplication.R;
 import com.sauloaguiar.neonapplication.fragments.SendMoneyFragment;
@@ -41,8 +40,6 @@ public class SendMoneyActivity extends AppCompatActivity {
         }
 
         initFragment(SendMoneyFragment.newInstance());
-
-        Toast.makeText(getApplicationContext(), "Test...", Toast.LENGTH_SHORT).show();
     }
 
     private void initFragment(SendMoneyFragment fragment) {

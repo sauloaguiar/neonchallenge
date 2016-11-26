@@ -11,4 +11,9 @@
         <item name="android:colorBackground">@drawable/background_gradient</item>
     </style>
 
+    <style name="SpecialButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">#00a7a8</item>
+        <item name="android:textColorPrimary">#fff</item>
+    </style>
+
 </resources>

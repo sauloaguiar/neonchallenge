@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">NeonApplication</string>
+    <string name="send">ENVIAR</string>
     <string name="send_money">ENVIAR DINHEIRO</string>
     <string name="send_history">HISTÓRICO DE ENVIOS</string>
+    <string name="send_history_description">Accese aqui o histórico de envio</string>
+    <string name="send_money_description">Clique aqui para enviar dinheiro</string>
+    <string name="amount_to_be_sent">Valor a enviar:</string>
 </resources>

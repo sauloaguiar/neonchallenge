@@ -31,8 +31,8 @@ public class InMemoryFriendsRepository implements FriendsRepository {
     }
 
     private void generateFriends(){
-        int friendId = 1;
-        Friend f = new Friend(friendId, "Daniele Targueris", "(12) 99878 9989", R.drawable.womam_1);
+        int friendId = 0;
+        Friend f = new Friend(friendId, "Daniele Targuerian", "(12) 99878-9989", R.drawable.womam_1);
         cachedFriends.put(String.valueOf(friendId), f);
         friendId++;
 
@@ -60,7 +60,7 @@ public class InMemoryFriendsRepository implements FriendsRepository {
         cachedFriends.put(String.valueOf(friendId), f);
         friendId++;
 
-        f = new Friend(friendId, "Ingrid Selvagem", "(41)97989-1244", R.drawable.womam_4);
+        f = new Friend(friendId, "Ingrid Santos", "(41)97989-1244", R.drawable.womam_4);
         cachedFriends.put(String.valueOf(friendId), f);
         friendId++;
 

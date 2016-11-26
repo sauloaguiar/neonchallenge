@@ -62,15 +62,7 @@ public class SendMoneyFragment extends Fragment {
         return rootView;
     }
 
-    /**
-     * Generates Strings for RecyclerView's adapter. This data would usually come
-     * from a local content provider or remote server.
-     */
     private void initDataset() {
-//        contacts = new String[20];
-//        for (int i = 0; i < 20; i++) {
-//            contacts[i] = "This is element #" + i;
-//        }
         FriendRepositories.getInMemoryRepo().getAllFriends(new FriendsRepository.FriendsServiceCallback<List<Friend>>() {
             @Override
             public void onLoaded(List<Friend> friends) {
