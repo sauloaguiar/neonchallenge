@@ -67,6 +67,10 @@ public class InMemoryFriendsRepository implements FriendsRepository {
         f = new Friend(friendId, "Alexandre Santos", "(85)99980-9291", R.drawable.men_5);
         cachedFriends.put(String.valueOf(friendId), f);
         friendId++;
+
+        f = new Friend(friendId, "Alexandre Santos", "(85)99980-9291", R.drawable.men_1);
+        cachedFriends.put(String.valueOf(friendId), f);
+        friendId++;
     }
 
 }

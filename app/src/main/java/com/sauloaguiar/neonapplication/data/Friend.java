@@ -34,4 +34,8 @@ public class Friend {
         return friendId;
     }
 
+    public String getStringId(){
+        return String.valueOf(friendId);
+    }
+
 }

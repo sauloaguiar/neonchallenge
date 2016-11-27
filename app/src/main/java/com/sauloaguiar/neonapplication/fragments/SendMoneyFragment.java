@@ -76,7 +76,7 @@ public class SendMoneyFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
         SendMoneyDialogFragment dialogFragment = new SendMoneyDialogFragment();
         dialogFragment.setArguments(b);
-        dialogFragment.show(fm, "Sample Fragment");
+        dialogFragment.show(fm, "");
     }
 }
 

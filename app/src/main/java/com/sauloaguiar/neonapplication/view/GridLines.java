@@ -33,7 +33,7 @@ public class GridLines extends RecyclerView {
         int right = getRight();
 
         Paint paint = new Paint();
-        paint.setColor(getResources().getColor(R.color.gridLineColor));
+        paint.setColor(getResources().getColor(R.color.colorGridLine));
         paint.setStrokeWidth((int) getResources().getDimension(R.dimen.grid_line_width));
 
         while (bottom > 0) {

@@ -3,22 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="3">
 
     <com.sauloaguiar.neonapplication.view.GridLines
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/graphRecyclerView"
+        android:paddingStart="@dimen/paddingStart"
+        android:layout_marginBottom="20dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorSeparator"
+        android:layout_marginEnd="@dimen/paddingStart"
+        android:layout_marginStart="@dimen/paddingStart"
         />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:id="@+id/friendListRecyclerView"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"/>
-
+        android:paddingEnd="@dimen/paddingStart"
+        android:paddingStart="@dimen/paddingStart"/>
 
 </LinearLayout>

@@ -36,6 +36,7 @@ public class SendMoneyDialogFragment extends DialogFragment {
         final View view = inflater.inflate(R.layout.dialog_send_money, container, false);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         int position = getArguments().getInt("position");
+
         Toast.makeText(getActivity(), "Element " + position + " clicked.", Toast.LENGTH_SHORT).show();
 
         FriendRepositories.getInMemoryRepo().getFriend(String.valueOf(position), new FriendsRepository.FriendsServiceCallback<Friend>() {

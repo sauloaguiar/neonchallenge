@@ -8,7 +8,10 @@
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorName">#009C9D</color>
     <color name="colorNumber">#00777D</color>
+    <color name="colorSeparator">#0e4461</color>
 
     <color name="colorDialogBackground">#FF2A576B</color>
-    <color name="gridLineColor">#FF043D60</color>
+    <color name="colorGridLine">#FF043D60</color>
+    <color name="colorRing">#004e84</color>
+    <color name="colorPhotoMargin">#00a0a1</color>
 </resources>
