@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sauloaguiar.neonapplication.R;
+import com.sauloaguiar.neonapplication.activities.HistoryActivity;
 import com.sauloaguiar.neonapplication.activities.SendMoneyActivity;
 
 /**
@@ -28,18 +29,23 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         root.findViewById(R.id.sendMoneyButton).setOnClickListener(this);
+        root.findViewById(R.id.viewHistoryButton).setOnClickListener(this);
 
         return root;
     }
 
     @Override
     public void onClick(View v) {
+        Intent i;
         switch (v.getId()){
             case R.id.sendMoneyButton:
-                Intent i = new Intent(getContext(), SendMoneyActivity.class);
+                i = new Intent(getContext(), SendMoneyActivity.class);
                 startActivity(i);
                 break;
 
+            case R.id.viewHistoryButton:
+                i = new Intent(getContext(), HistoryActivity.class);
+                startActivity(i);
 
             default:
                 break;

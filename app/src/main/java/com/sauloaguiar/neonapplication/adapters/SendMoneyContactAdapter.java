@@ -23,7 +23,6 @@ public class SendMoneyContactAdapter extends RecyclerView.Adapter<SendMoneyConta
         void itemSelected(int position);
     }
 
-
     private List<Friend> friends;
     private AdapterListenerCallback callback;
 

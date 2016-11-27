@@ -24,19 +24,17 @@ import java.util.List;
  */
 public class SendMoneyFragment extends Fragment {
 
-    private LinearLayoutManager mLayoutManager;
-
-
     public static SendMoneyFragment newInstance(){
         return new SendMoneyFragment();
     }
 
     public SendMoneyFragment(){}
 
+    private LinearLayoutManager mLayoutManager;
     protected RecyclerView recyclerView;
-    protected SendMoneyContactAdapter madapter;
-    //protected String[] contacts;
-    List<Friend> contacts = null;
+    protected SendMoneyContactAdapter mAdapter;
+    private List<Friend> contacts = null;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,14 +48,14 @@ public class SendMoneyFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        madapter = new SendMoneyContactAdapter(contacts, new SendMoneyContactAdapter.AdapterListenerCallback() {
+        mAdapter = new SendMoneyContactAdapter(contacts, new SendMoneyContactAdapter.AdapterListenerCallback() {
             @Override
             public void itemSelected(int position) {
                 showDialog(position);
             }
         });
 
-        recyclerView.setAdapter(madapter);
+        recyclerView.setAdapter(mAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), mLayoutManager.getOrientation()));
         return rootView;
     }

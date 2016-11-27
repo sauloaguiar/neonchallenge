@@ -10,18 +10,18 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.sauloaguiar.neonapplication.R;
-import com.sauloaguiar.neonapplication.fragments.SendMoneyFragment;
+import com.sauloaguiar.neonapplication.fragments.HistoryFragment;
 
 /**
  * Created by sauloaguiar on 11/24/16.
  */
 
-public class SendMoneyActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_money);
+        setContentView(R.layout.activity_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // update icon
@@ -31,7 +31,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         toolbar.setTitle("");
 
         // Get access to the custom title view
-        ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(R.string.send_money);
+        ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(R.string.send_history);
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
@@ -46,10 +46,10 @@ public class SendMoneyActivity extends AppCompatActivity {
             return;
         }
 
-        initFragment(SendMoneyFragment.newInstance());
+        initFragment(HistoryFragment.newInstance());
     }
 
-    private void initFragment(SendMoneyFragment fragment) {
+    private void initFragment(HistoryFragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.contentFrame, fragment);

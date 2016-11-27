@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SendMoneyActivity"/>
+        <activity android:name=".activities.HistoryActivity"/>
     </application>
 
 </manifest>

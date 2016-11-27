@@ -10,4 +10,5 @@
     <color name="colorNumber">#00777D</color>
 
     <color name="colorDialogBackground">#FF2A576B</color>
+    <color name="gridLineColor">#FF043D60</color>
 </resources>
