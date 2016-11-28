@@ -122,7 +122,7 @@ public class GraphHistoryAdapter extends RecyclerView.Adapter<GraphHistoryAdapte
             value = (TextView) itemView.findViewById(R.id.value);
             ring = itemView.findViewById(R.id.ring);
             line = itemView.findViewById(R.id.line);
-            photo = (CircleImageView) itemView.findViewById(R.id.photo);
+            photo = (CircleImageView) itemView.findViewById(R.id.friendPhoto);
         }
     }
 }

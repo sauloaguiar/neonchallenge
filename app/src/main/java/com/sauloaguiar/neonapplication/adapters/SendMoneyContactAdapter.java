@@ -67,7 +67,7 @@ public class SendMoneyContactAdapter extends RecyclerView.Adapter<SendMoneyConta
                 }
             });
 
-            photo = (CircleImageView) itemView.findViewById(R.id.photo);
+            photo = (CircleImageView) itemView.findViewById(R.id.friendPhoto);
             name = (TextView) itemView.findViewById(R.id.friendName);
             phone = (TextView) itemView.findViewById(R.id.friendPhone);
         }

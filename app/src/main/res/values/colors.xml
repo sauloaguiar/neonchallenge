@@ -14,4 +14,6 @@
     <color name="colorGridLine">#FF043D60</color>
     <color name="colorRing">#004e84</color>
     <color name="colorPhotoMargin">#00a0a1</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

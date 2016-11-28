@@ -6,4 +6,9 @@
     <string name="send_history_description">Accese aqui o histórico de envio</string>
     <string name="send_money_description">Clique aqui para enviar dinheiro</string>
     <string name="amount_to_be_sent">Valor a enviar:</string>
+    <string name="username">Sebastiao da Silva</string>
+    <string name="email">sebastiao@email.com</string>
+    <string name="server_error">Tivemos um problema contactando o servidor.</string>
+    <string name="money_sent_message">Dinheiro enviado com sucesso!</string>
+    <string name="money_sent_error">Tivemos um problema na operação.</string>
 </resources>

@@ -70,12 +70,11 @@ public class HistoryFragment extends Fragment {
             }
         });
 
-
         listRecyclerView = (RecyclerView) view.findViewById(R.id.friendListRecyclerView);
         mListLayoutManager = new LinearLayoutManager(getActivity());
         listRecyclerView.addItemDecoration(new DividerItemDecoration(listRecyclerView.getContext(), mListLayoutManager.getOrientation()));
         listRecyclerView.setLayoutManager(mListLayoutManager);
-        mHistoryAdapter = new SendHistoryAdapter(transactions);
+        mHistoryAdapter = new SendHistoryAdapter(transactions, contacts);
         listRecyclerView.setAdapter(mHistoryAdapter);
     }
 

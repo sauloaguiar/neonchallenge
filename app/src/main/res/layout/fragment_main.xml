@@ -12,7 +12,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:src="@drawable/user"
-        android:id="@+id/photo"
+        android:id="@+id/friendPhoto"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/colorAccent"
 
@@ -27,26 +27,26 @@
         android:layout_height="120dp" />
 
     <TextView
-        android:text="Sebastiao Da Silva"
+        android:text="@string/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/friendPhoto"
         android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
-        app:layout_constraintLeft_toLeftOf="@+id/photo"
-        app:layout_constraintRight_toRightOf="@+id/photo" />
+        app:layout_constraintLeft_toLeftOf="@+id/friendPhoto"
+        app:layout_constraintRight_toRightOf="@+id/friendPhoto" />
 
     <TextView
-        android:text="sebastiao@gmail.com"
+        android:text="@string/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/email"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintRight_toRightOf="@+id/photo"
-        app:layout_constraintLeft_toLeftOf="@+id/photo" />
+        app:layout_constraintRight_toRightOf="@+id/friendPhoto"
+        app:layout_constraintLeft_toLeftOf="@+id/friendPhoto" />
 
     <Button
         android:text="@string/send_money"

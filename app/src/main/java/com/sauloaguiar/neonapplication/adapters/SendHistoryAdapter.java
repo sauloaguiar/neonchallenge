@@ -4,11 +4,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.sauloaguiar.neonapplication.R;
+import com.sauloaguiar.neonapplication.data.Friend;
 import com.sauloaguiar.neonapplication.data.Transaction;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by sauloaguiar on 11/26/16.
@@ -17,9 +23,12 @@ import java.util.List;
 public class SendHistoryAdapter extends RecyclerView.Adapter<SendHistoryAdapter.ViewHolder> {
 
     private final List<Transaction> transactions;
+    private final List<Friend> friends;
+    private NumberFormat brazilianRealFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-    public SendHistoryAdapter(List<Transaction> transactions) {
+    public SendHistoryAdapter(List<Transaction> transactions, List<Friend> friends) {
         this.transactions = transactions;
+        this.friends = friends;
     }
 
     @Override
@@ -30,7 +39,21 @@ public class SendHistoryAdapter extends RecyclerView.Adapter<SendHistoryAdapter.
 
     @Override
     public void onBindViewHolder(SendHistoryAdapter.ViewHolder holder, int position) {
+        Transaction transaction = transactions.get(position);
+        Friend friend = getFriendById(transaction.getClientId());
+        holder.name.setText(friend.getName());
+        holder.number.setText(friend.getPhone());
+        holder.value.setText(brazilianRealFormat.format(transaction.getValor()));
+        holder.photo.setImageResource(friend.getImageResource());
+    }
 
+    private Friend getFriendById(String id) {
+        for(Friend f : friends) {
+            if(f.getStringId().equals(id)) {
+                return f;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -40,8 +63,18 @@ public class SendHistoryAdapter extends RecyclerView.Adapter<SendHistoryAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView name;
+        TextView number;
+        TextView value;
+        CircleImageView photo;
+
         public ViewHolder(View itemView) {
             super(itemView);
+
+            name = (TextView) itemView.findViewById(R.id.friendName);
+            number = (TextView) itemView.findViewById(R.id.friendPhone);
+            value = (TextView) itemView.findViewById(R.id.friendTransactionValue);
+            photo = (CircleImageView) itemView.findViewById(R.id.friendPhoto);
         }
     }
 }

@@ -8,7 +8,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/photo"
+        android:id="@+id/friendPhoto"
         android:layout_centerHorizontal="true"
         android:layout_width="@dimen/graph_friend_photo"
         android:layout_height="@dimen/graph_friend_photo"
@@ -24,7 +24,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/line_gradient"
-        android:layout_above="@id/photo"
+        android:layout_above="@id/friendPhoto"
         />
 
     <View
