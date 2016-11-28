@@ -1,11 +1,13 @@
 package com.sauloaguiar.neonapplication.adapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.sauloaguiar.neonapplication.R;
 import com.sauloaguiar.neonapplication.data.Friend;
 import com.sauloaguiar.neonapplication.data.Transaction;
@@ -44,7 +46,17 @@ public class SendHistoryAdapter extends RecyclerView.Adapter<SendHistoryAdapter.
         holder.name.setText(friend.getName());
         holder.number.setText(friend.getPhone());
         holder.value.setText(brazilianRealFormat.format(transaction.getValor()));
-        holder.photo.setImageResource(friend.getImageResource());
+
+        Friend f = getFriendById(transaction.getClientId());
+        if (f.getImageResource() != -1) {
+            holder.photo.setImageResource(f.getImageResource());
+        } else {
+            // put generated image
+            TextDrawable drawable2 = TextDrawable.builder()
+                    .beginConfig().height(60).width(60).endConfig()
+                    .buildRound(String.valueOf(f.getName().charAt(0)), Color.TRANSPARENT);
+            holder.photo.setImageDrawable(drawable2);
+        }
     }
 
     private Friend getFriendById(String id) {

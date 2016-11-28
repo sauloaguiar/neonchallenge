@@ -1,11 +1,13 @@
 package com.sauloaguiar.neonapplication.adapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.sauloaguiar.neonapplication.R;
 import com.sauloaguiar.neonapplication.data.Friend;
 
@@ -42,7 +44,17 @@ public class SendMoneyContactAdapter extends RecyclerView.Adapter<SendMoneyConta
         Friend friend = friends.get(position);
         holder.name.setText(friend.getName());
         holder.phone.setText(friend.getPhone());
-        holder.photo.setImageResource(friend.getImageResource());
+//        holder.photo.setImageResource(friend.getImageResource());
+
+        if (friend.getImageResource() != -1) {
+            holder.photo.setImageResource(friend.getImageResource());
+        } else {
+            // put generated image
+            TextDrawable drawable2 = TextDrawable.builder()
+                    .beginConfig().height(60).width(60).endConfig()
+                    .buildRound(String.valueOf(friend.getName().charAt(0)), Color.TRANSPARENT);
+            holder.photo.setImageDrawable(drawable2);
+        }
     }
 
     @Override

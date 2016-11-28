@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.sauloaguiar.neonapplication.NeonApplication;
 import com.sauloaguiar.neonapplication.R;
 import com.sauloaguiar.neonapplication.data.Friend;
@@ -58,7 +59,16 @@ public class SendMoneyDialogFragment extends DialogFragment implements View.OnCl
             @Override
             public void onLoaded(Friend friends) {
                 friend = friends;
-                ((CircleImageView) view.findViewById(R.id.friendPhoto)).setImageResource(friends.getImageResource());
+                CircleImageView imageView = ((CircleImageView) view.findViewById(R.id.friendPhoto));
+                if (friend.getImageResource() != -1) {
+                    imageView.setImageResource(friend.getImageResource());
+                } else {
+                    // put generated image
+                    TextDrawable drawable2 = TextDrawable.builder()
+                            .beginConfig().height(60).width(60).endConfig()
+                            .buildRound(String.valueOf(friend.getName().charAt(0)), Color.TRANSPARENT);
+                    imageView.setImageDrawable(drawable2);
+                }
                 ((TextView) view.findViewById(R.id.name)).setText(friends.getName());
                 ((TextView) view.findViewById(R.id.phone)).setText(friends.getPhone());
             }
@@ -122,6 +132,7 @@ public class SendMoneyDialogFragment extends DialogFragment implements View.OnCl
                     @Override
                     public void onFailure(Call<Boolean> call, Throwable t) {
                         progressDialog.dismiss();
+                        Toast.makeText(getContext(), getString(R.string.money_sent_error), Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;

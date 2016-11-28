@@ -63,35 +63,24 @@ public class GraphHistoryAdapter extends RecyclerView.Adapter<GraphHistoryAdapte
 
         int valueHeight = calculateHeightForValue(transaction.getValor());
 
-        ValueAnimator va = ValueAnimator.ofInt(10, valueHeight);
-        va.setDuration(1800);
-        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(10, valueHeight);
+        valueAnimator.setDuration(1800);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
                 Integer value = (Integer) animation.getAnimatedValue();
                 holder.line.getLayoutParams().height = value.intValue();
                 holder.line.requestLayout();
             }
         });
-        va.start();
-
-        ValueAnimator textValue = ValueAnimator.ofFloat(0, (float) transaction.getValor());
-        textValue.setDuration(1800);
-        textValue.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float value = (float) animation.getAnimatedValue();
-                holder.value.setText(brNumberFormat.format(value));
-                holder.value.requestLayout();
-            }
-        });
-        //textValue.start();
+        valueAnimator.start();
 
         Friend f = getFriendById(transaction.getClientId());
-        if (f != null || f.getImageResource() != -1) {
+        if (f.getImageResource() != -1) {
             holder.photo.setImageResource(f.getImageResource());
         } else {
             // put generated image
             TextDrawable drawable2 = TextDrawable.builder()
+                    .beginConfig().height(60).width(60).endConfig()
                     .buildRound(String.valueOf(f.getName().charAt(0)), Color.TRANSPARENT);
             holder.photo.setImageDrawable(drawable2);
         }
