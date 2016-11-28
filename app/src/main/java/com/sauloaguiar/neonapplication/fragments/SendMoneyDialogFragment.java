@@ -101,13 +101,13 @@ public class SendMoneyDialogFragment extends DialogFragment implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.sendButton:
-                progressDialog = new Dialog(getContext(), android.R.style.Theme_Translucent);
-                progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                progressDialog.setContentView(R.layout.neon_progress_dialog);
-                progressDialog.setCancelable(true);
-                progressDialog.show();
 
                 double value = getDoubleFromString(sendMoneyText.getText().toString());
+                if(value == 0.0){
+                    Toast.makeText(getContext(), getString(R.string.insufficient_value), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                showDialog();
                 endpoint.sendMoney(friend.getStringId(), getApplicationToken(), value).enqueue(new Callback<Boolean>() {
                     @Override
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
@@ -120,7 +120,9 @@ public class SendMoneyDialogFragment extends DialogFragment implements View.OnCl
                         dismiss();
                     }
                     @Override
-                    public void onFailure(Call<Boolean> call, Throwable t) {}
+                    public void onFailure(Call<Boolean> call, Throwable t) {
+                        progressDialog.dismiss();
+                    }
                 });
                 break;
 
@@ -129,10 +131,21 @@ public class SendMoneyDialogFragment extends DialogFragment implements View.OnCl
         }
     }
 
-    public String getApplicationToken() {
-        return ((NeonApplication)getActivity().getApplication()).getApplicationToken();
+    private void showDialog() {
+        progressDialog = new Dialog(getContext(), android.R.style.Theme_Translucent);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setContentView(R.layout.neon_progress_dialog);
+        progressDialog.setCancelable(true);
+        progressDialog.show();
     }
 
+    public String getApplicationToken() {
+        return NeonApplication.getInstance().getApplicationToken();
+    }
+
+    /**
+     * http://www.jbkr.com.br/geral/programacao-geral/android-mascara-monetaria/
+     */
     private class MoneyMask implements TextWatcher {
         final EditText field;
 

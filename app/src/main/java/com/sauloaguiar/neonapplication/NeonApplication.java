@@ -20,7 +20,6 @@ public class NeonApplication extends Application {
     private static NeonApplication application = null;
 
     private final String TOKEN = "token";
-    private String token = "";
     private SharedPreferences mPreferences;
 
     public static synchronized NeonApplication getInstance(){

@@ -1,14 +1,20 @@
 package com.sauloaguiar.neonapplication.data;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by sauloaguiar on 11/26/16.
  */
 
 public class Transaction implements Comparable<Transaction> {
 
+    @SerializedName("Id")
     private String id;
+    @SerializedName("ClienteId")
     private String clientId;
+    @SerializedName("Valor")
     private double valor;
+    @SerializedName("Data")
     private String data;
 
     public Transaction(String id, String clientId, double value, String date) {

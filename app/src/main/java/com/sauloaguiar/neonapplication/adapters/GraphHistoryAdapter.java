@@ -30,7 +30,8 @@ public class GraphHistoryAdapter extends RecyclerView.Adapter<GraphHistoryAdapte
     private final List<Friend> friends;
     private List<Transaction> transactions;
     private double maxValue = 0;
-    private NumberFormat brazilianRealFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+    private NumberFormat brCurrencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+    private NumberFormat brNumberFormat = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
 
     public GraphHistoryAdapter(List<Transaction> transactions, List<Friend> friends, int viewHeight) {
         this.transactions = transactions;
@@ -58,7 +59,7 @@ public class GraphHistoryAdapter extends RecyclerView.Adapter<GraphHistoryAdapte
     public void onBindViewHolder(final GraphHistoryAdapter.ViewHolder holder, int position) {
         Transaction transaction = transactions.get(position);
 
-        holder.value.setText(brazilianRealFormat.format(transaction.getValor()));
+        holder.value.setText(brCurrencyFormat.format(transaction.getValor()));
 
         int valueHeight = calculateHeightForValue(transaction.getValor());
 
@@ -78,11 +79,12 @@ public class GraphHistoryAdapter extends RecyclerView.Adapter<GraphHistoryAdapte
         textValue.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                String value = (String) animation.getAnimatedValue();
-                holder.value.setText("" + value);
+                float value = (float) animation.getAnimatedValue();
+                holder.value.setText(brNumberFormat.format(value));
                 holder.value.requestLayout();
             }
         });
+        //textValue.start();
 
         Friend f = getFriendById(transaction.getClientId());
         if (f != null || f.getImageResource() != -1) {

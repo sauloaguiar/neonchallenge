@@ -5,7 +5,9 @@ import com.google.gson.GsonBuilder;
 import com.sauloaguiar.neonapplication.data.Transaction;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,6 +21,9 @@ import retrofit2.http.Query;
  * Created by sauloaguiar on 11/27/16.
  */
 
+/**
+ * https://square.github.io/retrofit/
+ */
 public class NeonEndpoint {
 
     // Trailing slash is needed
@@ -28,9 +33,15 @@ public class NeonEndpoint {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
             .create();
 
+    final static OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .readTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build();
+
     private static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
             .build();
 
     public static NeonEndpointInterface getEndpoint(){
@@ -40,7 +51,7 @@ public class NeonEndpoint {
     public interface NeonEndpointInterface {
 
         @GET("GetTransfers")
-        Call<List<Transaction>> getWeather(@Query("token") String token);
+        Call<List<Transaction>> getTransactions(@Query("token") String token);
 
         @GET("GenerateToken")
         Call<String> getToken(@Query("nome") String name, @Query("email") String email);
